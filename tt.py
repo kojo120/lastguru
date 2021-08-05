@@ -29,32 +29,36 @@ def read_file():
         return df
 filename = 'test.csv'
 
-def setUpModule():
-    global df
-    with dt.working_directory(__file__):
-        df = pd.read_csv('test.csv')
+missing_value_formats = ["n.a.","?","NA","n/a", "na", "--"]
+df = pd.read_csv("test.csv", na_values = missing_value_formats)
 
-class TestValues(dt.DataTestCase):
-    @dt.mandatory
-    def test_columns(self):
-        self.assertValid(
-            df.columns,
-            {'CID', 'Chargeback_Case_ID', 'Case_Number', 'Desired_State', 'DNF_Reason', 'REP_ID'},
-        )
+def make_int(i):
+    try:
+        return int(i)
+    except:
+        return pd.np.nan
 
-def test_CID(self):
-        self.assertValid(df['CID'], int)
+# apply make_int function to the entire series using map
+df['CID'] = df['CID'].map(make_int)
+print(df['CID'].head())
+df['Chargeback Case ID'] = df['Chargeback Case ID'].map(make_int)
+print(df['Chargeback Case ID'].head())
+df['Case Number'] = df['Case Number'].map(make_int)
+print(df['Case Number'].head())
+df['REP ID'] = df['REP ID'].map(make_int)
+print(df['REP ID'].head())
 
-def test_Chargeback_Case_ID(self):
-        self.assertValid(df['Chargeback_Case_ID'], int)
-def test_Csae_Number(self):
-        self.assertValid(df['Case_Numer'], int)
-def test_Desired_State(self):
-        self.assertValidRegex(df['Desired_State'], r'^[A-Z]')
-def test_DNR_Reason(self):
-        self.assertValidRegex(df['DNF_Reason'], r'^[A-Z]')
-def test_REP_ID(self):
-        self.assertValid(df['REP_ID'], int)
+missing_value_formats = ["0-9"]
+df = pd.read_csv("test.csv", na_values = missing_value_formats)
+def make_str(i):
+    try:
+        return str(i)
+    except:
+        return pd.np.nan
+df['Desired State'] = df['Desired State'].map(make_str)
+print(df['Desired State'].head())
+df['DNF Reason'] = df['DNF Reason'].map(make_str)
+print(df['DNF Reason'].head())
 
 
 with open('test.csv', 'r') as csv_file:
@@ -77,6 +81,11 @@ for col in df.columns:
     else:
         print("{} has NO missing value!".format(col))
 filename = 'test.csv'
+
+
+
+
+
 
 ============================================
 
