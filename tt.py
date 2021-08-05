@@ -103,7 +103,7 @@ df['CID'] = df['CID'].map(make_int)
 print(df['CID'].head())
         
         
-        
+        https://go.slack.com/get-started/enQtMjM2NTM5MjE4NTY5Ny1mOTdlOTk1MjI3N2ExNWFhYTc1MGI4MWY1YmRiNzJmZWI3OTBjZmRlNDU3MGM3ZDgxOGY5ODUzZjJmN2JjZjBm?e=anVzdGljZS5rQG1pZGlnYXRvci5jb20%3D&i=default&m=slack&x=x-a2365392208017
         
         
         https://www.dezyre.com/recipes/perform-data-validation-python-by-processing-only-matched-columns
