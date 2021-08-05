@@ -77,6 +77,21 @@ for col in df.columns:
     else:
         print("{} has NO missing value!".format(col))
 filename = 'test.csv'
+
+============================================
+
+missing_value_formats = ["n.a.","?","NA","n/a", "na", "--"]
+df = pd.read_csv("test.csv", na_values = missing_value_formats)
+
+def make_int(i):
+    try:
+        return int(i)
+    except:
+        return pd.np.nan
+
+# apply make_int function to the entire series using map
+df['CID'] = df['CID'].map(make_int)
+print(df['CID'].head())
         
         
         
