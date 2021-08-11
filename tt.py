@@ -104,5 +104,5 @@ print(df['CID'].head())
         
         
         
-        
+         aws ssm describe-instance-information --query 'InstanceInformationList[*].[InstanceId,PlatformType,PlatformName]' --output table  --region us-east-1
         https://www.dezyre.com/recipes/perform-data-validation-python-by-processing-only-matched-columns
