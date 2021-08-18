@@ -1,16 +1,16 @@
 ---
-- hosts: svcserver
+- hosts: server
   become: true
   tasks:
    - name: create blank file
      file:
-       path: "/data/dxtoolkit2/scripts//ans.txt"
+       path: "/ans.txt"
        state: touch
        mode: 0755
        owner: root
   tasks:
     - name: content
       copy:
-         dest: "/data/dxtoolkit2/scripts/ans.txt"
+         dest: "/ans.txt"
          content: |
            This is test from ansible playbook
